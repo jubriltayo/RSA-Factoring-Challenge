@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" Factorize set of numbers in a file to give product of two smaller numbers"""
+"""
+Factorize set of numbers in a file to give product of two smaller numbers"""
 from sys import argv
 
 
@@ -12,6 +13,7 @@ def factorize(number):
         n += 1
     print("{}={}*{}".format(number, number // n, n))
 
+
 if len(argv) != 2:
     exit()
 
@@ -20,9 +22,8 @@ try:
         line = file.readline()
 
         while line != "":
-            """splits at the end of each line and [0] removes its string and array, now an int"""
-            number = int(line.split('\n')[0]) 
+            number = int(line.split('\n')[0])
             factorize(number)
             line = file.readline()
-except:
+except Exception:
     pass
