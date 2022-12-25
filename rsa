@@ -1,0 +1,31 @@
+#!/usr/bin/python3
+""" Factorize numbers in a file into two prime numbers"""
+import sys
+
+
+def factorize():
+    """
+    Function to search file, get numbers and factorize them
+into two prime numbers (format n = p*q)
+    """
+    try:
+        file = sys.argv[1]
+        with open(file) as f:
+            for number in f:
+                number = int(number)
+                if number % 2 == 0:
+                    print("{}={}*{}".format(number, number // 2, 2))
+                    continue
+                i = 3
+                while i < number // 2:
+                    if number % i == 0:
+                        print("{}={}*{}".format(number, number // i, i))
+                        break
+                    i += 2
+                if i == (number // 2) + 1:
+                    print("{}={}*{}".format(number, number, 1))
+    except (IndexError):
+        pass
+
+
+factorize()
